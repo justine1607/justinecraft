@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: justine    # root password for MySQL
+      MYSQL_DATABASE: crm                    # your database name
+      MYSQL_USER: jmiras                     # app user
+      MYSQL_PASSWORD: symfony_password        # app user password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

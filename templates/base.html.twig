@@ -5,13 +5,56 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    {% block body %}
+        {% block header %}
+            <header data-menu-target="header">
+                <div class="theme-container">
+                    <div class="navbar" data-menu-target="navbar">
+                        <div class="logo-wrapper">
+                            <a href="#" class="logo-paw-link"><img src="{{ asset('build/media/logo.png')}}" alt="nav_img" class="paw-logo" /></a>
+                            <div class="hamburger">
+                                <div class="menu-toggle" data-menu-target="menuToggle" data-action="click->menu#button">
+                                </div>
+                            </div>
+                        </div>
+{#                        {% include 'theme/navigation/page.html.twig' %}#}
+                        <div class="header-info">
+                            <span class="number">+49 (0) 89 1234 5678 90</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            {% endblock %}
+        <main>
+            <div class="block-main">
+                {% block main %}
+                {% endblock %}
+            </div>
+        </main>
+        {% block footer %}
+            <footer>
+                <div class="theme-container">
+                    <div class="contact-row">
+                        <div class="left">
+                            <div class="label logo">© 2025 I YOuR BRAND</div>
+                        </div>
+                        <div class="right">
+                            <a href="#" class="label">DATENSCHUTZ</a>
+                            <a href="#" class=" label ">IMPRESSUM</a>
+                            <a href="#" class=" label">AGB</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+    {% endblock %}
     </body>
 </html>

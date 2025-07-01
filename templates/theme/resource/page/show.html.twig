@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="theme-headline">hello</div>
+
+    {% for block in blocks %}
+        {% if block.template is defined %}
+            {% include block.template with { 'data': block } %}
+        {% else %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
